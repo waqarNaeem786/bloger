@@ -1,27 +1,29 @@
 <html lang="en">
 <head>
+    <link rel="shortcut icon" href="open-book.png" type="image/x-icon" style="width: 100%;">
     <link rel="stylesheet" href="main.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>UOG-posts</title>
+    <title>IR-POST</title>
 </head>
 <body>
 
                 <!--nav bar-->  
-            <nav class="blue nav-wraper">  
+            <nav class="white nav-wraper">  
                     <div class="container">
-                        <a href="#">UOG-posts</a>
+                        <a href="#" class="brand-logo">
+                            <img src="ir-post logo.svg" style="width: 180px; margin-top: 10px;">
+                          </a>
                         <a href="#" class="sidenav-trigger" data-target="mobile-link">
-                            <i class="material-icons">menu</i>
+                            <i class="material-icons orange-text">menu</i>
                         </a>
                         <ul class="right hide-on-med-and-down">
-                            <li><a href="#">Home</a></li>
-                            <li><a href="#" class="modal-trigger" data-target="modal-post">Creat Blog</a></li>
-                            <li><a href="#" class="modal-trigger" data-target="modal-login">Login</a></li>
-                            <li><a href="#" class="modal-trigger" data-target="modal-signup">Sign Up</a></li>
+                            <li><a href="#" class="modal-trigger orange-text login" data-target="modal-post" style="display: block;">Creat Blog</a></li>
+                            <li><a href="#" class="modal-trigger orange-text logout" data-target="modal-login" style="display: block;">Login</a></li>
+                            <li><a href="#" class="modal-trigger orange-text logout" data-target="modal-signup" style="display: block;">Sign Up</a></li>
+                            <li><a href="#" class="orange-text login" id="logout" style="display: block;">Logout</a></li>
                         </ul>
                     </div>
                 
@@ -29,45 +31,61 @@
             
                 <ul class="sidenav" id="mobile-link">
                     <li><a href="#" >Home</a></li>
-                    <li><a href="#" class="modal-trigger" data-target="modal-post">Creat Blog</a></li>
-                    <li><a href="#" class="modal-trigger" data-target="modal-login">Login</a></li>
-                    <li><a href="#" class="modal-trigger" data-target="modal-signup">Sign In</a></li>
+                    <li><a href="#" class="modal-trigger orange-text" data-target="modal-post">Creat Blog</a></li>
+                    <li><a href="#" class="modal-trigger orange-text" data-target="modal-login">Login</a></li>
+                    <li><a href="#" class="modal-trigger orange-text" data-target="modal-signup">Sign In</a></li>
                 </ul>
                  <!--End nav bar-->  
 
                 <!-- LOGIN MODAL -->
             <div id="modal-login" class="modal">
                 <div class="modal-content">
-                <h4>Login</h4><br />
+                <h4 class="orange-text">Login</h4><br />
                 <form id="login-form">
                     <div class="input-field">
-                    <input type="email" id="login-email" required />
+                    <input type="email" class="orange-text" id="login-email" name="email" required />
                     <label for="login-email">Email address</label>
                     </div>
                     <div class="input-field">
-                    <input type="password" id="login-password" required />
+                    <input type="password" id="login-password" name="password" class="orange-text" required />
                     <label for="login-password">Your password</label>
                     </div>
-                    <button class="btn light-pink darken-2 z-depth-0">Login</button>
+                    <button class="btn orange darken-2 z-depth-0">Login</button>
                 </form>
                 </div>
             </div>
 
+            <!--Logout-->
+
+
+
+
+
+
+
 
                             <!-- SIGN UP MODAL -->
                 <div id="modal-signup" class="modal">
-                    <div class="modal-content">
-                    <h4>Sign up</h4><br />
+                    <div class="modal-content" >
+                    <h4 class="orange-text">Sign up</h4><br />
                     <form id="signup-form">
-                        <div class="input-field">
-                        <input type="email" id="signup-email" required />
+                        <div class="input-field white-text">
+                        <input type="email" id="signup-email" name="email" class="orange-text" required />
                         <label for="signup-email">Email address</label>
                         </div>
-                        <div class="input-field">
-                        <input type="password" id="signup-password" required />
+                        <div class="input-field white-text">
+                        <input type="password" name="password" id="signup-password" class="orange-text" required />
                         <label for="signup-password">Choose password</label>
                         </div>
-                        <button class="btn light-pink darken-2 z-depth-0">Sign up</button>
+                        <div class="input-field white-text">
+                            <input type="text" name="Username" class="orange-text" required />
+                            <label for="signup-password">Username</label>
+                        </div>
+                        <div class="input-field white-text">
+                            <input type="text" name="bio" class="orange-text"/>
+                            <label for="signup-password">bio</label>
+                        </div>
+                        <button class="btn orange darken-2 z-depth-0">Sign up</button>
                     </form>
                     </div>
                 </div>
@@ -75,22 +93,19 @@
 
                     <!-- Blog post Modal -->
                 <div id="modal-post" class="modal">
-                    <div class="modal-content">
-                        <h4>Write Blog</h4>
-                        <form class="col s12"  method="POST" id="post_form">
+                    <div class="text-white modal-content">
+                        <h4 class="orange-text">Write Blog</h4>
+                        <form class="col s12" id="post_form">
                             <div class="row">
                               <div class="input-field col s12">
                                 <i class="material-icons prefix">mode_edit</i>
-                                <textarea id="field" class="materialize-textarea" placeholder="what is going on?" data-length="120"></textarea>
-                                <button type="submit" id="done_btn" class="btn-floating btn-large right waves-effect waves-light teal">
+                                <textarea name="name" class="materialize-textarea orange-text" placeholder="please type yourname" data-length="120"></textarea>
+                                <i class="material-icons prefix">mode_edit</i>
+                                <textarea name="field" class="materialize-textarea orange-text" placeholder="what is going on?" data-length="120"></textarea>
+                                <button type="submit" id="done_btn" class="btn-floating btn-large right waves-effect waves-light orange">
                                     <i class="med material-icons" >check</i>
                                 </button>
-                                    <button class="btn-floating btn-medium waves-effect waves-light blue">
-                                        <i class="med material-icons">insert_photo</i>
-                                    </button> 
-                                    <button class="btn-floating btn-medium waves-effect waves-light blue" >
-                                        <i class="med material-icons">insert_emoticon</i>
-                                    </button>   
+                                   
                               </div>
                             </div>
                             
@@ -99,38 +114,71 @@
                     </div>
 
                 </div>
-                            <!--End Blog post Modal -->
 
-                        
+                
+                  
+                <!--card and user area-->
 
+                <div class="row">
 
+                    <div class="col s3 userinfo" >
+                        <div class="card white">
+                            <div class="card-content orange-text acount-details">
+                              
 
-                    <!--tweets-->
-                    <div class="container">
-                        <div class="card">
-                            <div class="card-image">
-                              <img src="woman.jpg">
-                              <span class="card-title">Card Title</span>
                             </div>
-                            <div class="card-content">
-                              <p>I am a very simple card. I am good at containing small bits of information.
-                              I am convenient because I require little markup to use effectively.</p>
-                            </div>
-                            <div class="card-action">
-                              <a href="#"><i class="material-icons">favorite</i>
-                                         
-                            </a>
-                            <a href="#"><i class="material-icons">comment</i></a>
-                            </div>
+                            
                           </div>
                     </div>
+              
+                    <div class="col s9 login" id="list">
+                       
+                    </div>
+              
+                </div>
+
+
+                <div class="footer-copyright white">
+                    <div class="container center-align orange-text">&copy; 2020 pk</div>
+                  </div>
+
+               
+               
+                   
+                 
+                      
+                       
+    
+                 
+                            <!--End Blog post Modal -->
+
+                 
+
+
+
                     
                 
                       
+                <script src="https://www.gstatic.com/firebasejs/8.1.2/firebase-app.js"></script>
+                <script src="https://www.gstatic.com/firebasejs/8.1.2/firebase-firestore.js"></script>
+                 <script src="https://www.gstatic.com/firebasejs/8.1.2/firebase-auth.js"></script>
 
 
-
-
+                   <script>
+                    // Your web app's Firebase configuration
+                    var firebaseConfig = {
+                      apiKey: "AIzaSyCgG9Ejg3s6H7xR4DPSMIZ46SznECXil1E",
+                      authDomain: "ir-posts.firebaseapp.com",
+                      projectId: "ir-posts",
+                      storageBucket: "ir-posts.appspot.com",
+                      messagingSenderId: "218630666090",
+                      appId: "1:218630666090:web:72e3774f228698e4c45713"
+                    };
+                    // Initialize Firebase
+                    firebase.initializeApp(firebaseConfig);
+                    const db = firebase.firestore();
+                    const auth = firebase.auth();
+                  </script>             
 
 
 
@@ -141,7 +189,7 @@
     <script>
        M.AutoInit();
     </script>
-    <script src="/model/main.js"></script>
+    <script src="main.js"></script>
    
 
 </body>

@@ -1,8 +1,9 @@
-.card{
-    justify-content: center;
-    width: 500px;
-    
-    justify-content: center;
-    align-content: center;
+body{
+    background-color: #f5f8f8;
 }
 
+.userinfo{
+    position: -webkit-sticky;
+   
+    text-align: center;
+}
